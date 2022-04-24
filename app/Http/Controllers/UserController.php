@@ -24,7 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $title ='isi riwayat hidup';
+        return view('user.isidataRiwayatHidup', compact('title'));
     }
 
     /**

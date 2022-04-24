@@ -39,13 +39,13 @@ class LoginController extends Controller
         // dd($data);
         if (Auth::Attempt($data)) {
             if (Auth::user()->role == 'admin') {
-                return redirect()->to('admin');
+                return redirect()->to('index');
                 // return response()->json(['status' => 'admin']);
             } elseif (Auth::user()->role == 'user') {
-                return redirect()->to('user');
+                return redirect()->route('index.user');
                 // return response()->json(['status' => 'user']);
             } elseif (Auth::user()->role == 'hrd') {
-                return redirect()->to('hrd');
+                return redirect()->to('index');
                 // return response()->json(['status' => 'hrd']);
             } else {
                 // request()->session()->regenerate();
@@ -74,7 +74,7 @@ class LoginController extends Controller
         $user = User::create($insert);
 
         if ($user) {
-            return redirect()->route('login')->with(['success' => 'pendaftaran success']);
+            return redirect('/')->with(['success' => 'pendaftaran success']);
         }
 
     }

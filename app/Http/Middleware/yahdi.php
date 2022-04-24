@@ -2,13 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Auth;
 
-class Admin
+class yahdi
 {
     /**
      * Handle an incoming request.
@@ -19,12 +16,6 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-
-            if (!Auth::check()){
-                return redirect('/');
-            }
-            return $next($request);
-
+        return $next($request);
     }
-
 }

@@ -7,8 +7,12 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
+                        @if (Auth::user()->role == 'admin')
                         <a href="{{ route('index') }}" class="site_title"><i class="fa fa-paw"></i>
-                            <span>Loker</span></a>
+                            @elseif (Auth::user()->role == 'user')
+                            <a href="{{ route('index.user') }}" class="site_title"><i class="fa fa-paw"></i>
+                                @endif
+                                <span>Loker</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -47,8 +51,14 @@
 
                                 @elseif (Auth::user()->role=='user')
 
-                                <li><a href="{{ route('actionLogout') }}"><i class="fa fa-power-off"></i> Logout</a>
-                                @endif
+                                <li><a href="{{ route('index.user') }}"><i class="fa fa-home"></i> Dashboard </a>
+                                </li>
+                                <li><a href="{{ route('create.user') }}"><i class="fa fa-book"></i> Daftar Riwarat Hidup </a>
+                                </li>
+                                <li><a href=""><i class="fa fa-money"></i> Lowongan </a>
+                                </li>
+                                <li><a href="{{ route('actionLogout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    @endif
 
                             </ul>
                         </div>
